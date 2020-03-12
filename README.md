@@ -34,5 +34,29 @@
 闭包的缺点就是常驻内存会增大内存使用量，并且使用不当很容易造成内存泄露
 如果不是因为某些特殊任务而需要闭包，在没有必要的情况下，在其他函数中创建函数是不明智的，因为闭包对脚本性能具有负面影响，包含处理速度和内存消耗。
 
+# cookie、localStorage和sessionStorage三者之间的区别
+三者的异同
 
+生命周期:
+cookie：可设置失效时间，没有设置的话，默认是关闭浏览器失效
+localStorage: 除非被手动清除，否则将会永久保存
+sessionStorage: 仅在当前网页会话下有效，关闭页面或浏览器就会被清除。
+
+存放数据大小:
+cookie: 4kb左右
+localStorage和sessionStorage：可以保存5MB的信息
+
+http请求：
+cookie: 每次都会携带在HTTP中，如果使用cookie保存过多数据会带来性能问题
+localStorage和sessionStorage: 仅在客户端（即浏览器）中保存，不参与和服务器的通信
+
+运用场景:
+从安全性来说，因为每次http请求都会携带cookie信息，这样无形中浪费了宽带，所以cookie应该尽可能少的使用，另外cookie还需要指定作用域，不可以跨域调用，限制比较多，但是用来识别用户登录来说，cookie还是比storage更好用的。其他情况下，可以使用storage,就用storage.
+
+storage在存储数据的大小上面秒杀了cookie，因为更大总是更好的。
+
+localStorage和sessionStorage唯一的差别一个是永久保存在浏览器里面，一个是关闭网页就清除了信息。localStorage可以用来夸页面传递参数, sessionStorage用来保存一些临时的数据，防止用户刷新页面之后丢失了一些参数。
+
+浏览器支持情况
+localStorage和sessionStorage是html5才应用的新特性，可能有些浏览器并不支持，这里要注意。
 
